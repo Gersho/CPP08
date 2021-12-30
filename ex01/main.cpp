@@ -6,11 +6,11 @@
 /*   By: kzennoun <kzennoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 22:15:19 by kzennoun          #+#    #+#             */
-/*   Updated: 2021/12/30 05:15:54 by kzennoun         ###   ########lyon.fr   */
+/*   Updated: 2021/12/30 06:13:43 by kzennoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Span.hpp"
+#include "span.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
