@@ -6,7 +6,7 @@
 /*   By: kzennoun <kzennoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 22:47:57 by kzennoun          #+#    #+#             */
-/*   Updated: 2021/12/29 23:28:20 by kzennoun         ###   ########lyon.fr   */
+/*   Updated: 2021/12/30 01:26:44 by kzennoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int main(void)
 
 	try
 	{
-		std::cout << easyfind(test, 42) << std::endl;
-		std::cout << easyfind(test, 43) << std::endl;
+		std::cout << *(easyfind(test, 42)) << std::endl;
+		std::cout << *(easyfind(test, 43)) << std::endl; //error : not found
 	}
 	catch(const std::exception& e)
 	{

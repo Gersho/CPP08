@@ -6,7 +6,7 @@
 /*   By: kzennoun <kzennoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 22:47:05 by kzennoun          #+#    #+#             */
-/*   Updated: 2021/12/29 23:23:00 by kzennoun         ###   ########lyon.fr   */
+/*   Updated: 2021/12/30 01:23:48 by kzennoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <vector>
 
 template<typename T>
-int & easyfind(T & vec, int value)
+typename T::iterator easyfind(T & vec, int value)
 {
 	class ElementNotFoundException : public std::exception
 	{
@@ -24,11 +24,11 @@ int & easyfind(T & vec, int value)
 		}
 	};
 
-	std::vector<int>::iterator it;
+	typename T::iterator it;
 
 	it = std::find(vec.begin(), vec.end(), value);
 	if (it != vec.end())
-		return *it;
+		return it;
 	else
 		throw ElementNotFoundException();
 }
