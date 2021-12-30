@@ -6,7 +6,7 @@
 /*   By: kzennoun <kzennoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 23:50:09 by kzennoun          #+#    #+#             */
-/*   Updated: 2021/12/30 03:35:05 by kzennoun         ###   ########lyon.fr   */
+/*   Updated: 2021/12/30 04:53:27 by kzennoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Span
 	~Span();
 
 	void	addNumber(int value);
-	void	addRange(std::vector<int>::iterator start, std::vector<int>::iterator end);
+	void	addRange(const std::vector<int>::iterator start, const std::vector<int>::iterator end);
 	long		shortestSpan() const;
 	long		longestSpan() const;
 	std::vector<int>::iterator	begin() const;
@@ -46,8 +46,10 @@ class Span
 
 	private : 
 
-	std::vector<int> * _array;
+	std::vector<int> _array;
+	std::vector<int>::iterator _begin;
 	std::vector<int>::iterator _currentlast;
+	std::vector<int>::iterator _end;
 	Span();
 };
 

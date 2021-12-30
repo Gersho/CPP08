@@ -6,7 +6,7 @@
 /*   By: kzennoun <kzennoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 23:50:13 by kzennoun          #+#    #+#             */
-/*   Updated: 2021/12/30 04:12:59 by kzennoun         ###   ########lyon.fr   */
+/*   Updated: 2021/12/30 05:09:32 by kzennoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@
 
 Span::Span()
 {
-	_array = NULL;
 }
 
 Span::Span(unsigned int N)
 {
-	_array = new std::vector<int>(N);
-	_currentlast = _array->begin();
+	_array = std::vector<int>(N);
+	_begin = _array.begin();
+	_end = _array.end();
+	_currentlast = _array.begin();
 }
 
 Span::Span( const Span & src )
 {
-std::cout << "COPY CONSTRUCTOR" << std::endl;
 	*this = src;
 }
 
@@ -41,8 +41,7 @@ std::cout << "COPY CONSTRUCTOR" << std::endl;
 
 Span::~Span()
 {
-	if (_array)
-		delete _array;
+	_array.clear();
 }
 
 
@@ -50,16 +49,17 @@ Span::~Span()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Span &				Span::operator=( Span const & rhs )
+Span &				Span::operator=( const Span & rhs )
 {
 	if ( this != &rhs )
 	{
-		if (_array)
-			delete (_array);
-std::cout << "OPERATOR =" << std::endl;
-		_array = new std::vector<int>(rhs._array->size());
-		_currentlast = rhs._currentlast;
-		addRange(rhs._array->begin(), rhs._currentlast);
+		_array.clear();
+		_array = std::vector<int>(rhs._array.size());
+
+		_currentlast = _array.begin();
+		_begin = _array.begin();
+		_end = _array.end();
+		addRange(rhs._begin, rhs._currentlast);
 	}
 	return *this;
 }
@@ -81,11 +81,11 @@ void	Span::addNumber(int value)
 	}
 }
 
-void	Span::addRange(std::vector<int>::iterator start, std::vector<int>::iterator end)
+void	Span::addRange(const std::vector<int>::iterator start,const std::vector<int>::iterator end)
 {
 	for (std::vector<int>::iterator it = start; it != end; it++)
 	{
-		addNumber(*start);
+		addNumber(*it);
 	}
 }
 
@@ -119,13 +119,14 @@ long		Span::longestSpan() const
 
 std::vector<int>::iterator	Span::begin() const
 {
-	return _array->begin();
+	return _begin;
 }
 
 std::vector<int>::iterator	Span::end() const
 {
-	return _array->end();
+	return _end;
 }
+
 
 
 /*

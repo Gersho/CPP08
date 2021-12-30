@@ -6,7 +6,7 @@
 /*   By: kzennoun <kzennoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 22:15:19 by kzennoun          #+#    #+#             */
-/*   Updated: 2021/12/30 04:10:52 by kzennoun         ###   ########lyon.fr   */
+/*   Updated: 2021/12/30 05:15:54 by kzennoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,47 +32,40 @@ int main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
+	std::cout << "--- print sp ---" << std::endl;
 	for (std::vector<int>::iterator it = sp.begin(); it != sp.end(); it++ )
 	{
 		std::cout << *it << std::endl;
 	}
-
-	std::cout << "##### PART 2 #####" << std::endl;
-//std::cout << "$$$$$$$$$$$$$$$allo" << std::endl;
 
 	Span sp2 = sp;
 	Span sp3(sp);
 	Span sp4(10);
 	sp4.addNumber(1);
 
+	std::cout << "--- print sp2 ---" << std::endl;
+	for (std::vector<int>::iterator it = sp2.begin(); it != sp2.end(); it++ )
+	{
+		std::cout << *it << std::endl;
+	}
 	try
 	{
 		std::cout << "sp shortest: " << sp.shortestSpan() << std::endl;
 		std::cout << "sp longest: " << sp.longestSpan() << std::endl;
-		std::cout << "sp2 shortest: " << sp2.shortestSpan() << std::endl;
-		std::cout << "sp2 longest: " << sp2.longestSpan() << std::endl;
-		std::cout << "add 99 to sp2" << std::endl;
-		sp2.addNumber(99);
-		std::cout << "sp shortest: " << sp.shortestSpan() << std::endl;
-		std::cout << "sp longest: " << sp.longestSpan() << std::endl;
-		std::cout << "sp2 shortest: " << sp2.shortestSpan() << std::endl;
-		std::cout << "sp2 longest: " << sp2.longestSpan() << std::endl;
 		std::cout << "sp4 shortest: " << sp4.shortestSpan() << std::endl; //error no span
-		std::cout << "sp4 longest: " << sp4.longestSpan() << std::endl; //error no span
-
 	}
 	catch (std::exception & e)
 	{
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << "##### PART 3 #####" << std::endl;
+	std::cout << "##### PART 2 #####" << std::endl;
 	Span sp8(150000);
 	std::vector<int> tmp(150000);
 
+	srand(time(NULL));
 	for (std::vector<int>::iterator it = tmp.begin(); it != tmp.end(); it++ )
 	{
-		srand(time(NULL));
 		*it = rand();
 	}
 
@@ -89,7 +82,6 @@ int main(void)
 	std::vector<int> tmp2(10);
 	for (std::vector<int>::iterator it = tmp2.begin(); it != tmp2.end(); it++ )
 	{
-		srand(std::time(NULL));
 		*it = rand();
 	}
 	try
@@ -100,6 +92,12 @@ int main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
+	std::cout << "--- print tmp2 ---" << std::endl;
+	for (std::vector<int>::iterator it = tmp2.begin(); it != tmp2.end(); it++ )
+	{
+		std::cout << *it << std::endl;
+	}
+	std::cout << "--- print sp9 ---" << std::endl;
 	for (std::vector<int>::iterator it = sp9.begin(); it != sp9.end(); it++ )
 	{
 		std::cout << *it << std::endl;
